@@ -1,0 +1,30 @@
+<% use WB.Templates %>
+<article>
+<%= @inner_html %>
+</article>
+
+<hr/>
+
+<%= if @backlinks != [] do %>
+  <h4>Backlinks</h4>
+  <ul>
+  <%= for {href, title} <- @backlinks do %>
+      <li>
+        <a href="<%= href %>"><%= title %></a>
+      </li>
+  <% end %>
+  </ul>
+  <hr/>
+<% end %>
+
+<section>
+  <small>
+    <center>
+    <code>
+    fingerprint <%= fingerprint(@doc) %> -- generated for: <%= @domain
+    %> at: <%= DateTime.utc_now() %>
+    </code>
+    </center>
+  </small>
+</section>
+

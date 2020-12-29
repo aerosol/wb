@@ -1,0 +1,33 @@
+<nav>
+  <%= if @children.docs != [] do %>
+    <h2>Documents:</h2>
+    <ul>
+    <%= for doc <- @children.docs do %>
+    <li>
+      <a href="<%= doc.href %>"><%= doc.title %></a>
+    </li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <%= if @children.dirs != [] do %>
+    <h2>Sub-sections:</h2>
+    <ul>
+    <%= for dir <- @children.dirs do %>
+    <li>
+      <a href="<%= dir.href %>/index.html"><%= dir.name %></a>
+    </li>
+    </ul>
+    <% end %>
+  <% end %>
+</nav>
+
+<hr/>
+
+<section>
+<small>
+  <center>
+    Index generated automatically.
+  </center>
+</small>
+</section>
