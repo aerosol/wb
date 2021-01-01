@@ -24,3 +24,7 @@ Template assigns available are [^1]:
 
 See also:
  - [[Index Template]]
+
+## Footnotes
+
+[^1]: These are subject to change before v1.0.0 launches
