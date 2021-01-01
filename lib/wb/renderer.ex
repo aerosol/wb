@@ -2,6 +2,7 @@ defmodule WB.Renderer do
   alias WB.Layout
   alias WB.Resources.Dir
   alias WB.Resources.Document
+  alias WB.Resources.StaticDir
   alias WB.Resources.StaticFile
   alias WB.XmasTree
 
@@ -9,14 +10,10 @@ defmodule WB.Renderer do
     layout
     |> Map.fetch!(:resources)
     |> Enum.map(fn
-      %Document{} = document ->
-        render_document(document, layout, domain)
-
-      %StaticFile{} = file ->
-        file
-
-      %Dir{} = dir ->
-        render_dir(dir, layout, domain)
+      %Document{} = document -> render_document(document, layout, domain)
+      %StaticFile{} = file -> file
+      %StaticDir{} = dir -> dir
+      %Dir{} = dir -> render_dir(dir, layout, domain)
     end)
     |> save(out_root)
 
@@ -141,6 +138,12 @@ defmodule WB.Renderer do
         dest = Path.join([out_root, file.reldir, file.basename])
         XmasTree.info("Copying file verbatim #{source}", dest)
         File.copy!(source, dest)
+
+      %StaticDir{} = dir ->
+        source = dir.path
+        dest = Path.join([out_root, dir.relpath])
+        XmasTree.info("Copying static directory verbatim #{source}", dest)
+        File.cp_r!(source, dest)
     end)
   end
 

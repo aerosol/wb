@@ -17,6 +17,8 @@ defmodule WB.Resources.StaticFile do
     relpath = Path.join(reldir, basename)
     type = Path.extname(path) |> String.downcase()
 
+    false = String.starts_with?(basename, "_")
+
     %__MODULE__{
       basename: basename,
       dirname: dirname,

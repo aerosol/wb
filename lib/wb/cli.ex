@@ -17,7 +17,7 @@ defmodule WB.CLI do
   Examples:
 
       wb new my-wiki
-      wb gen my-wiki /tmp/my-wiki-dev && firefox /tmp/my-wiki-dev/index.html
+      wb gen my-wiki /tmp/my-wiki-dev # and navigate to file:///tmp/my-wiki-dev/index.html
       wb gen my-wiki /tmp/my-wiki-prod https://example.com
   """
 
@@ -27,7 +27,7 @@ defmodule WB.CLI do
         new(layout_root)
 
       {[], ["gen", layout_root, build_root], []} ->
-        generate(layout_root, build_root, build_root)
+        generate(layout_root, build_root, "file://" <> build_root)
 
       {[], ["gen", layout_root, build_root, domain], []} ->
         generate(layout_root, build_root, domain)
