@@ -2,7 +2,7 @@
 
 Static files, such as [[images]] are copied from [[layout root]] to [[build root]] verbatim.
 
-*NOTE* Unlike static [[directories]], files whose basename is prefixed with an
+**NOTE** Unlike static [[directories]], files whose basename is prefixed with an
 underscore (`_`) are _NOT_ copied over to the [[build root]].
 
 A static file is anything that is:
