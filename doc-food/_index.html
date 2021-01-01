@@ -10,6 +10,17 @@
     </ul>
   <% end %>
 
+  <%= if @children.images != [] do %>
+    <h2>Images:</h2>
+    <ul>
+    <%= for img <- @children.images do %>
+    <li>
+      <a href="<%= img.href %>"><%= img.name %></a>
+    </li>
+    <% end %>
+    </ul>
+  <% end %>
+
   <%= if @children.dirs != [] do %>
     <h2>Sub-sections:</h2>
     <ul>

@@ -1,8 +1,9 @@
 defmodule WB.Layout do
   require Logger
 
-  alias WB.Resources.Document
   alias WB.Resources.Dir
+  alias WB.Resources.Document
+  alias WB.Resources.Image
   alias WB.XmasTree
 
   defstruct resources: [], root: nil
@@ -181,6 +182,9 @@ defmodule WB.Layout do
 
           [Document.new(path, root, templates) | acc]
 
+        File.regular?(path) and image?(path) ->
+          [Image.new(path, root) | acc]
+
         true ->
           acc
       end
@@ -212,6 +216,9 @@ defmodule WB.Layout do
 
       %Document{} = scanning ->
         scanning.reldir == dir.relpath
+
+      %Image{} = scanning ->
+        scanning.reldir == dir.relpath
     end)
   end
 
@@ -233,5 +240,15 @@ defmodule WB.Layout do
         _ -> false
       end
     )
+  end
+
+  defp image?(path) do
+    type =
+      path
+      |> Path.extname()
+      |> String.downcase()
+      |> String.trim_leading(".")
+
+    type in ["jpg", "jpeg", "png", "gif"]
   end
 end
