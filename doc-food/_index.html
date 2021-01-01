@@ -10,12 +10,12 @@
     </ul>
   <% end %>
 
-  <%= if @children.images != [] do %>
-    <h2>Images:</h2>
+  <%= if @children.files != [] do %>
+    <h2>Files:</h2>
     <ul>
-    <%= for img <- @children.images do %>
+    <%= for file <- @children.files do %>
     <li>
-      <a href="<%= img.href %>"><%= img.name %></a>
+      <a href="<%= file.href %>"><%= file.name %></a>
     </li>
     <% end %>
     </ul>

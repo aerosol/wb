@@ -1,4 +1,4 @@
-defmodule WB.Resources.Image do
+defmodule WB.Resources.StaticFile do
   defstruct path: nil,
             basename: nil,
             dirname: nil,
@@ -13,7 +13,7 @@ defmodule WB.Resources.Image do
 
     basename = Path.basename(path)
     dirname = Path.dirname(path)
-    reldir = Path.dirname(relative_to(path, root)) |> IO.inspect()
+    reldir = Path.dirname(relative_to(path, root))
     relpath = Path.join(reldir, basename)
     type = Path.extname(path) |> String.downcase()
 
