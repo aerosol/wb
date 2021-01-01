@@ -10,6 +10,17 @@
     </ul>
   <% end %>
 
+  <%= if @children.files != [] do %>
+    <h2>Files:</h2>
+    <ul>
+    <%= for file <- @children.files do %>
+    <li>
+      <a href="<%= file.href %>"><%= file.name %></a>
+    </li>
+    <% end %>
+    </ul>
+  <% end %>
+
   <%= if @children.dirs != [] do %>
     <h2>Sub-sections:</h2>
     <ul>
