@@ -11,6 +11,10 @@ defmodule WB.Templates.Defaults do
     unquote(File.read!("priv/_single.html"))
   end
 
+  def stylesheet() do
+    unquote(File.read!("priv/_static/css/style.css"))
+  end
+
   def hello(layout_root) do
     """
     # Welcome to Writer's Block!

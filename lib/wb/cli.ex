@@ -52,10 +52,17 @@ defmodule WB.CLI do
     :ok = File.write!(Path.join(layout_root, "_main.html"), Templates.Defaults.main())
     :ok = File.write!(Path.join(layout_root, "_single.html"), Templates.Defaults.single())
     :ok = File.write!(Path.join(layout_root, "hello.md"), Templates.Defaults.hello(layout_root))
+    :ok = File.mkdir_p!(Path.join(layout_root, "_static/css"))
+
+    :ok =
+      File.write!(
+        Path.join(layout_root, "_static/css/style.css"),
+        Templates.Defaults.stylesheet()
+      )
 
     XmasTree.success(
       "Done! To generate run:",
-      "wb gen #{layout_root} /tmp/test && firefox /tmp/test/index.html"
+      "wb gen #{layout_root} /tmp/test"
     )
   end
 
