@@ -2,7 +2,7 @@
   <%= if @children.docs != [] do %>
     <h2>Documents:</h2>
     <ul>
-    <%= for doc <- @children.docs do %>
+    <%= for doc <- Enum.sort_by(@children.docs, & &1.title) do %>
     <li>
       <a href="<%= doc.href %>"><%= doc.title %></a>
     </li>
@@ -13,7 +13,7 @@
   <%= if @children.files != [] do %>
     <h2>Files:</h2>
     <ul>
-    <%= for file <- @children.files do %>
+    <%= for file <- Enum.sort_by(@children.files, & &1.name) do %>
     <li>
       <a href="<%= file.href %>"><%= file.name %></a>
     </li>
@@ -24,7 +24,7 @@
   <%= if @children.dirs != [] do %>
     <h2>Sub-sections:</h2>
     <ul>
-    <%= for dir <- @children.dirs do %>
+    <%= for dir <- Enum.sort_by(@children.dirs, & &1.name) do %>
     <li>
       <a href="<%= dir.href %>/index.html"><%= dir.name %></a>
     </li>
