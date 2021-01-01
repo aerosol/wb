@@ -1,18 +1,19 @@
 defmodule WB.Renderer do
-  alias WB.Resources.Document
-  alias WB.Resources.Dir
   alias WB.Layout
+  alias WB.Resources.Dir
+  alias WB.Resources.Document
+  alias WB.Resources.StaticDir
+  alias WB.Resources.StaticFile
   alias WB.XmasTree
 
   def render_layout(%Layout{} = layout, out_root, domain \\ "/") do
     layout
     |> Map.fetch!(:resources)
     |> Enum.map(fn
-      %Document{} = document ->
-        render_document(document, layout, domain)
-
-      %Dir{} = dir ->
-        render_dir(dir, layout, domain)
+      %Document{} = document -> render_document(document, layout, domain)
+      %StaticFile{} = file -> file
+      %StaticDir{} = dir -> dir
+      %Dir{} = dir -> render_dir(dir, layout, domain)
     end)
     |> save(out_root)
 
@@ -24,7 +25,7 @@ defmodule WB.Renderer do
       children =
         layout
         |> Layout.list_children(dir)
-        |> Enum.reduce(%{docs: [], dirs: []}, fn
+        |> Enum.reduce(%{docs: [], dirs: [], files: []}, fn
           %Document{title: title, relpath: relpath}, acc ->
             %{
               acc
@@ -35,6 +36,9 @@ defmodule WB.Renderer do
 
           %Dir{basename: basename, relpath: relpath}, acc ->
             %{acc | dirs: [%{name: basename, href: Path.join(domain, relpath)} | acc.dirs]}
+
+          %StaticFile{basename: basename, relpath: relpath}, acc ->
+            %{acc | files: [%{name: basename, href: Path.join(domain, relpath)} | acc.files]}
         end)
 
       XmasTree.warn("Dir #{dir.reldir} has no index.", inspect(children))
@@ -127,6 +131,19 @@ defmodule WB.Renderer do
           dest,
           document.render
         )
+
+      %StaticFile{} = file ->
+        File.mkdir_p!(file.reldir)
+        source = file.path
+        dest = Path.join([out_root, file.reldir, file.basename])
+        XmasTree.info("Copying file verbatim #{source}", dest)
+        File.copy!(source, dest)
+
+      %StaticDir{} = dir ->
+        source = dir.path
+        dest = Path.join([out_root, dir.relpath])
+        XmasTree.info("Copying static directory verbatim #{source}", dest)
+        File.cp_r!(source, dest)
     end)
   end
 

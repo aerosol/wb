@@ -1,8 +1,8 @@
 defmodule WB.Layout do
-  require Logger
-
-  alias WB.Resources.Document
   alias WB.Resources.Dir
+  alias WB.Resources.Document
+  alias WB.Resources.StaticDir
+  alias WB.Resources.StaticFile
   alias WB.XmasTree
 
   defstruct resources: [], root: nil
@@ -172,6 +172,9 @@ defmodule WB.Layout do
       path = Path.join(dir, f)
 
       cond do
+        File.dir?(path) and String.starts_with?(Path.basename(path), "_") ->
+          [StaticDir.new(path, root) | acc]
+
         File.dir?(path) ->
           templates = templates_for(path, inherited_templates)
           [Dir.new(path, root, templates) | list_resources(path, root, templates)] ++ acc
@@ -180,6 +183,9 @@ defmodule WB.Layout do
           templates = templates_for(path, inherited_templates)
 
           [Document.new(path, root, templates) | acc]
+
+        File.regular?(path) and not String.starts_with?(Path.basename(path), "_") ->
+          [StaticFile.new(path, root) | acc]
 
         true ->
           acc
@@ -212,6 +218,12 @@ defmodule WB.Layout do
 
       %Document{} = scanning ->
         scanning.reldir == dir.relpath
+
+      %StaticFile{} = scanning ->
+        scanning.reldir == dir.relpath
+
+      %StaticDir{} ->
+        false
     end)
   end
 
