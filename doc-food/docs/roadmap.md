@@ -15,6 +15,8 @@
   - [x] [[static files]] and [[directories]]
   - [x] directories prefixed with `_` are copied over verbatim (for static
     resources)
+  - [ ] add support [[title|document titles override]] syntax
+  - [ ] sort children alphabetically in index templates
   - [ ] documents graph
   - [ ] [[FrontMatter]] parsing
   - [ ] better dead-link detection
