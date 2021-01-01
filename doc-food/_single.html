@@ -1,7 +1,14 @@
 <% use WB.Templates %>
+
 <article>
 <%= @inner_html %>
 </article>
+
+<section style="text-align: right;">
+  <a href="https://github.com/aerosol/wb/edit/main/doc-food/<%= @relpath %>.md">
+    Edit this page
+  </a>
+</section>
 
 <hr/>
 
@@ -20,9 +27,11 @@
 <section>
   <small>
     <center>
+
     <code>
     fingerprint <%= fingerprint(@doc) %> -- generated for: <%= @domain
-    %> at: <%= DateTime.utc_now() %>
+    %> at: <%= DateTime.utc_now() %><br/>
+
     </code>
     </center>
   </small>
