@@ -1,7 +1,8 @@
 defmodule WB.Renderer do
-  alias WB.Resources.Document
-  alias WB.Resources.Dir
   alias WB.Layout
+  alias WB.Resources.Dir
+  alias WB.Resources.Document
+  alias WB.Resources.Image
   alias WB.XmasTree
 
   def render_layout(%Layout{} = layout, out_root, domain \\ "/") do
@@ -10,6 +11,9 @@ defmodule WB.Renderer do
     |> Enum.map(fn
       %Document{} = document ->
         render_document(document, layout, domain)
+
+      %Image{} = image ->
+        image
 
       %Dir{} = dir ->
         render_dir(dir, layout, domain)
@@ -24,7 +28,7 @@ defmodule WB.Renderer do
       children =
         layout
         |> Layout.list_children(dir)
-        |> Enum.reduce(%{docs: [], dirs: []}, fn
+        |> Enum.reduce(%{docs: [], dirs: [], images: []}, fn
           %Document{title: title, relpath: relpath}, acc ->
             %{
               acc
@@ -35,6 +39,9 @@ defmodule WB.Renderer do
 
           %Dir{basename: basename, relpath: relpath}, acc ->
             %{acc | dirs: [%{name: basename, href: Path.join(domain, relpath)} | acc.dirs]}
+
+          %Image{basename: basename, relpath: relpath}, acc ->
+            %{acc | images: [%{name: basename, href: Path.join(domain, relpath)} | acc.images]}
         end)
 
       XmasTree.warn("Dir #{dir.reldir} has no index.", inspect(children))
@@ -127,6 +134,13 @@ defmodule WB.Renderer do
           dest,
           document.render
         )
+
+      %Image{} = image ->
+        File.mkdir_p!(image.reldir)
+        source = image.path
+        dest = Path.join([out_root, image.reldir, image.basename])
+        XmasTree.info("Copying image #{source}", dest)
+        File.copy!(source, dest)
     end)
   end
 
