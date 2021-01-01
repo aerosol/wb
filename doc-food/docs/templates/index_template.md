@@ -9,8 +9,10 @@ indexed directories. The indexing happens only if a directory contains to
 
 Template assigns available are [^1]:
 
-  - `@children` - a map with `docs` and `dirs` keys, each of which is a
-    two-element tuple of `href` and directory `name` or document's `title`, respectively.
+  - `@children` - a map with the following keys:
+    - `docs` - two-element tuples consisting of document's `href` and `title`
+    - `dirs` - two-element tuples consisting of directory's `href` and `name`
+    - `files` - a list of [[static files]] in the form of two-element tuples consisting of static file's `href` and `name`
   - `@domain` - the target domain used for site generation. Can be used for
     building absolute links.
   - `@reldir` - relative directory of the index

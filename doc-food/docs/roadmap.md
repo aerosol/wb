@@ -12,6 +12,7 @@
   - [x] [[backlinks]]
   - [x] bootstrap new page CLI
   - [x] installable escript + [[installation]] instructions
+  - [x] [[static files]]
   - [ ] documents graph
   - [ ] [[FrontMatter]] parsing
   - [ ] directories prefixed with `_` are copied over verbatim (for static
