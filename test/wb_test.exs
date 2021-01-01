@@ -125,7 +125,7 @@ defmodule WbTest do
     assert Layout.doc_by_path(layout, "foo.md").title == "foo"
     assert Layout.doc_by_path(layout, "bar.md").title == "Bar Baz"
     assert Layout.doc_by_path(layout, "bam.md").title == "Hello world"
-    assert Layout.doc_by_path(layout, "notitle.md").title == "Untitled"
+    assert Layout.doc_by_path(layout, "notitle.md").title == "notitle"
   end
 
   test "templates are tracked", %{root: root} do

@@ -29,7 +29,7 @@ defmodule WB.Resources.Document do
       root: root,
       templates: templates,
       links: extract_links(raw),
-      title: extract_title(raw),
+      title: extract_title(raw, basename),
       basename: basename,
       dirname: dirname,
       raw: raw,
@@ -37,14 +37,10 @@ defmodule WB.Resources.Document do
     }
   end
 
-  def set_render(%__MODULE__{} = doc, render) do
-    %{doc | render: render}
-  end
-
-  def extract_title(body) do
+  def extract_title(body, default) do
     body
     |> String.split("\n", trim: true)
-    |> Enum.find_value("Untitled", fn
+    |> Enum.find_value(default, fn
       "# " <> title -> title
       _ -> false
     end)

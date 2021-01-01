@@ -7,7 +7,7 @@ Document titles are resolved via whatever is found first, in this particular ord
   ```
   # This is my document
   ```
-3. Fallback to default "Untitled" string
+3. Fallback to markdown file basename
 
 ## Example
 
