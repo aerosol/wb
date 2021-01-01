@@ -12,11 +12,11 @@
   - [x] [[backlinks]]
   - [x] bootstrap new page CLI
   - [x] installable escript + [[installation]] instructions
-  - [x] [[static files]]
+  - [x] [[static files]] and [[directories]]
+  - [x] directories prefixed with `_` are copied over verbatim (for static
+    resources)
   - [ ] documents graph
   - [ ] [[FrontMatter]] parsing
-  - [ ] directories prefixed with `_` are copied over verbatim (for static
-    resources)
   - [ ] better dead-link detection
   - [ ] final tweaks to the default stylesheet
   - [ ] better tests (+ renderer)
