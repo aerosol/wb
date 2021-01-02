@@ -6,7 +6,7 @@
 ## Install via [hex](https://hex.pm/) package manager:
 
 ```
-$ mix escript.install github aerosol/wb
+$ mix escript.install github aerosol/wb branch main
 ```
 
 You're done. If all is well, `wb` [escript](https://hexdocs.pm/mix/master/Mix.Tasks.Escript.Build.html) should be avaiable in your `$PATH`.
