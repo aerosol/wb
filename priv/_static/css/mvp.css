@@ -463,7 +463,7 @@ blockquote footer {
 :root {
   --color-secondary: #0e17c9;
   --width-content: 800px;
-  --font-family-sans: "Nimbus Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans: "Nimbus Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   --font-family-serif: "charter", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --line-height: 1.6;
@@ -471,7 +471,7 @@ blockquote footer {
 
 body {
   font-family: var(--font-family-serif);
-  font-size: 1.1em;
+  font-size: 1.0em;
 }
 
 nav {
@@ -488,6 +488,10 @@ pre, code, samp {
   font-size: medium;
 }
 
+pre {
+  max-width: var(--width-content);
+}
+
 h1,
 h2,
 h3,
@@ -495,6 +499,11 @@ h4,
 h5,
 h6 {
   font-family: var(--font-family-sans);
+  color: #333;
+}
+
+h1 {
+  color: #000;
 }
 
 a {
@@ -510,10 +519,17 @@ blockquote {
   font-family: var(--font-family-serif);
   font-style: italic;
   text-align: left;
-  border-left: 8px solid var(--color-secondary-accent);
+  background: #f9f6e3;
+  border: 1px solid #f9f6e3;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow) var(--color-shadow);
 }
 
 nav ul li+li:before {
   color: black;
   content: "/\00a0";
+}
+
+main, header {
+    padding: 0 1rem;
 }

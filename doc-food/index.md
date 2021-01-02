@@ -1,6 +1,4 @@
-# Welcome to Writer's Block! :sparkles:
-
-## What is `wb`?
+# Welcome to Writer's Block!
 
   - :heart: a personal wiki (or [[exobrain]]) engine for hackers
   - :notebook: simplistic markdown processor with [[zettelkasten]] flavor
@@ -22,10 +20,10 @@
 Everyone needs to write their own static page generator and this one is special
  (just like every other one :angel:).
 
-### Can I see a demo?
+## Can I see a demo?
 
 You're looking at it! `wb` dogfooding in action.
 
-### Acknowledgements
+## Acknowledgements
 
   - _In loving memory of MF DOOM_.
