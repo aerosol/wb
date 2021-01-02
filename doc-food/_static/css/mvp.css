@@ -499,11 +499,6 @@ h4,
 h5,
 h6 {
   font-family: var(--font-family-sans);
-  color: #333;
-}
-
-h1 {
-  color: #000;
 }
 
 a {
@@ -515,21 +510,36 @@ ul a {
 }
 
 blockquote {
+  font-size: medium;
   margin: 0;
   font-family: var(--font-family-serif);
   font-style: italic;
   text-align: left;
-  background: #f9f6e3;
-  border: 1px solid #f9f6e3;
+  border: 1px solid var(--color-accent);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow) var(--color-shadow);
+  padding: 0.5rem 1rem;
 }
 
 nav ul li+li:before {
-  color: black;
+  color: var(--color-text-secondary);
   content: "/\00a0";
 }
 
 main, header {
     padding: 0 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color: #a9b1d6;
+        --color-accent: #9ab1d64f;
+        --color-bg: #1a1b26;
+        --color-bg-secondary: #333;
+        --color-secondary: #0097FC;
+        --color-secondary-accent: #E0AF68;
+        --color-shadow: #bbbbbb20;
+        --color-text: #acb0d0;
+        --color-text-secondary: #4e5173;
+    }
 }
