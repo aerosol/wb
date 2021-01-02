@@ -1,4 +1,9 @@
 defmodule WB.Templates.Defaults do
+  @external_resource "priv/_main.html"
+  @external_resource "priv/_index.html"
+  @external_resource "priv/_single.html"
+  @external_resource "priv/_static/css/mvp.css"
+
   def main() do
     unquote(File.read!("priv/_main.html"))
   end
@@ -12,14 +17,33 @@ defmodule WB.Templates.Defaults do
   end
 
   def stylesheet() do
-    unquote(File.read!("priv/_static/css/style.css"))
+    unquote(File.read!("priv/_static/css/mvp.css"))
   end
 
   def hello(layout_root) do
     """
     # Welcome to Writer's Block!
 
-    Drop markdown files into `#{Path.absname(layout_root)}` directory and you're good to go. Have fun!
+    1. Drop markdown files into `#{Path.absname(layout_root)}` directory
+    2. Regenerate the site with `wb gen`
+
+    Have fun!
+
+    If in doubt, check out the [docs](https://mtod.org/wb).
     """
+  end
+
+  def font_files() do
+    unquote(
+      [
+        "charter_regular.woff",
+        "charter_bold.woff",
+        "charter_italic.woff",
+        "charter_bold_italic.woff"
+      ]
+      |> Enum.map(fn ff ->
+        {ff, File.read!("priv/_static/fonts/#{ff}")}
+      end)
+    )
   end
 end

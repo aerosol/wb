@@ -5,32 +5,70 @@
     <title>Writer's Block</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="<%= Path.join(@domain, "_static/css/style.css") %>">
+    <link rel="stylesheet" type="text/css" href="<%= Path.join(@domain, "_static/css/mvp.css") %>">
+    <style>
+      a[href^="http://"]:not([href*="<%= @domain %>"]):after,
+      a[href^="https://"]:not([href*="<%= @domain %>"]):after{
+          content: " [↗]"
+      }
+      @font-face {
+        font-family: "charter";
+        src: url("<%= Path.join(@domain, "_static/fonts/charter_regular.woff") %>") format('woff');
+      }
+
+      @font-face {
+        font-family: "charter";
+        src: url("<%= Path.join(@domain, "_static/fonts/charter_bold.woff") %>") format('woff');
+        font-weight: bold;
+      }
+
+      @font-face {
+        font-family: "charter";
+        src: url("<%= Path.join(@domain, "_static/fonts/charter_bold_italic.woff") %>") format('woff');
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      @font-face {
+        font-family: "charter";
+        src: url("<%= Path.join(@domain, "_static/fonts/charter_italic.woff") %>") format('woff');
+        font-style: italic;
+      }
+    </style>
 </head>
 
 <body>
+<header>
   <nav>
     <ul class="breadcrumbs">
       <li>
-  <a href="<%= Path.join(@domain, "index.html") %>">Home</a>
+        <a href="<%= Path.join(@domain, "index.html") %>">Home</a>
       </li>
       <%= for {href, crumb} <- breadcrumbs(@relpath, @domain) do %>
-      <li><a href="<%= href %>"><%= crumb %></a></li>
+        <li>
+          <a href="<%= href %>"><%= crumb %></a>
+        </li>
   <% end %>
+    </ul>
   </nav>
+</header>
 
-  <section>
-  <%= @inner_html %>
-  </section>
+<main>
+<%= @inner_html %>
+</main>
 
-  <hr/>
-
-  <footer>
-    <center>
-      <small>
-        Writer's Block - open source personal wiki. &copy; 2021 Adam Rutkowski
-      </small>
-    </center>
-  </footer>
+<footer>
+  <center>
+    <small>
+    <p>
+      Generated using <strong>Writer's Block</strong> - open source personal
+      wiki engine.
+    </p>
+    <p>
+      &copy; 2021 Adam Rutkowski
+    </p>
+    </small>
+  </center>
+</footer>
 </body>
 </html>

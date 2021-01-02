@@ -53,12 +53,21 @@ defmodule WB.CLI do
     :ok = File.write!(Path.join(layout_root, "_single.html"), Templates.Defaults.single())
     :ok = File.write!(Path.join(layout_root, "hello.md"), Templates.Defaults.hello(layout_root))
     :ok = File.mkdir_p!(Path.join(layout_root, "_static/css"))
+    :ok = File.mkdir_p!(Path.join(layout_root, "_static/fonts"))
 
     :ok =
       File.write!(
-        Path.join(layout_root, "_static/css/style.css"),
+        Path.join(layout_root, "_static/css/mvp.css"),
         Templates.Defaults.stylesheet()
       )
+
+    for {font_filename, font} <- Templates.Defaults.font_files() do
+      :ok =
+        File.write!(
+          Path.join(layout_root, "_static/fonts/#{font_filename}"),
+          font
+        )
+    end
 
     XmasTree.success(
       "Done! To generate run:",

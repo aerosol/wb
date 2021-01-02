@@ -1,16 +1,8 @@
 <% use WB.Templates %>
 
 <article>
-<%= @inner_html %>
+  <%= @inner_html %>
 </article>
-
-<section style="text-align: right;">
-  <a href="https://github.com/aerosol/wb/edit/main/doc-food/<%= @relpath %>.md">
-    Edit this page
-  </a>
-</section>
-
-<hr/>
 
 <%= if @backlinks != [] do %>
   <h4>Backlinks</h4>
@@ -21,19 +13,20 @@
       </li>
   <% end %>
   </ul>
-  <hr/>
+
+  <a href="https://github.com/aerosol/wb/edit/main/doc-food/<%= @relpath %>.md">
+    Edit this page
+  </a>
+
 <% end %>
+
+<hr/>
 
 <section>
   <small>
     <center>
-
-    <code>
-    fingerprint <%= fingerprint(@doc) %> -- generated for: <%= @domain
-    %> at: <%= DateTime.utc_now() %><br/>
-
-    </code>
+      fingerprint <code><%= fingerprint(@doc) %></code> -- generated for
+      <strong><%= @domain %></strong> at <%= DateTime.utc_now() %><br/>
     </center>
   </small>
 </section>
-

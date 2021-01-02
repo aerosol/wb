@@ -24,6 +24,4 @@ Template assigns available are [^1]:
 <%= File.read!("doc-food/_index.html") %>
 ```
 
-## Footnotes
-
 [^1]: These are subject to change before v1.0.0 launches

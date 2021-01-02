@@ -1,37 +1,43 @@
-<nav>
-  <%= if @children.docs != [] do %>
-    <h2>Documents:</h2>
-    <ul>
-    <%= for doc <- Enum.sort_by(@children.docs, & &1.title) do %>
-    <li>
-      <a href="<%= doc.href %>"><%= doc.title %></a>
-    </li>
-    <% end %>
-    </ul>
+<section>
+<%= if @children.docs != [] do %>
+<aside>
+  <h2>Documents:</h2>
+  <ul>
+  <%= for doc <- Enum.sort_by(@children.docs, & &1.title) do %>
+  <li>
+    <a href="<%= doc.href %>"><%= doc.title %></a>
+  </li>
   <% end %>
+  </ul>
+</aside>
+<% end %>
 
-  <%= if @children.files != [] do %>
-    <h2>Files:</h2>
-    <ul>
-    <%= for file <- Enum.sort_by(@children.files, & &1.name) do %>
-    <li>
-      <a href="<%= file.href %>"><%= file.name %></a>
-    </li>
-    <% end %>
-    </ul>
+<%= if @children.files != [] do %>
+<aside>
+  <h2>Files:</h2>
+  <ul>
+  <%= for file <- Enum.sort_by(@children.files, & &1.name) do %>
+  <li>
+    <a href="<%= file.href %>"><%= file.name %></a>
+  </li>
   <% end %>
+  </ul>
+</aside>
+<% end %>
 
-  <%= if @children.dirs != [] do %>
-    <h2>Sub-sections:</h2>
-    <ul>
-    <%= for dir <- Enum.sort_by(@children.dirs, & &1.name) do %>
-    <li>
-      <a href="<%= dir.href %>/index.html"><%= dir.name %></a>
-    </li>
-    <% end %>
-    </ul>
+<%= if @children.dirs != [] do %>
+<aside>
+  <h2>Sub-sections:</h2>
+  <ul>
+  <%= for dir <- Enum.sort_by(@children.dirs, & &1.name) do %>
+  <li>
+    <a href="<%= dir.href %>/index.html"><%= dir.name %></a>
+  </li>
   <% end %>
-</nav>
+  </ul>
+</aside>
+<% end %>
+</section>
 
 <hr/>
 
@@ -42,3 +48,4 @@
   </center>
 </small>
 </section>
+

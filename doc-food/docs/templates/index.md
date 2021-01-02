@@ -1,5 +1,9 @@
 # Templates
 
+Default Writer's Block looks makes use of: 
+  - [MVP.CSS](https://andybrewer.github.io/mvp/) by Andy Brewer
+  - [Charter font](https://practicaltypography.com/charter.html)
+
 `wb` comes with three templates out of the box:
 
   - [[Main Template]] - the outer HTML wrapping all your pages

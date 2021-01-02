@@ -19,8 +19,8 @@
 
 ## Why?
 
-Everyone needs to write their own static page generator and this one is special, 
-just like every other one :angel:
+Everyone needs to write their own static page generator and this one is special
+ (just like every other one :angel:).
 
 ### Can I see a demo?
 
@@ -28,4 +28,4 @@ You're looking at it! `wb` dogfooding in action.
 
 ### Acknowledgements
 
-_In loving memory of MF DOOM_.
+  - _In loving memory of MF DOOM_.

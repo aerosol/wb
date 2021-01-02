@@ -18,12 +18,22 @@ defmodule WB.Templates do
       |> Path.relative_to(".")
       |> Path.split()
 
-    1..length(splits)
-    |> Enum.map(&Enum.take(splits, &1))
-    |> Enum.drop(-1)
-    |> Enum.map(fn p ->
-      {Path.join([domain, Path.join(p), "index.html"]), List.last(p)}
-    end)
-    |> Enum.concat([{Path.join(domain, relpath <> ".html"), "permalink"}])
+    crumbs =
+      1..length(splits)
+      |> Enum.map(&Enum.take(splits, &1))
+      |> Enum.drop(-1)
+      |> Enum.map(fn p ->
+        {Path.join([domain, Path.join(p), "index.html"]), List.last(p)}
+      end)
+
+    permalink_href = Path.join(domain, relpath <> ".html")
+
+    case List.last(crumbs) do
+      {^permalink_href, _} ->
+        crumbs
+
+      _ ->
+        Enum.concat(crumbs, [{permalink_href, "permalink"}])
+    end
   end
 end

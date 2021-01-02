@@ -32,5 +32,7 @@
 ## v1.1.0:
 
   - [ ] (optional) page history tracking from git repository
+  - [ ] automatic table rendering from CSV/JSON files
+  - [ ] Jupyter notebooks rendering
   - [ ] render only pages that changed
   - [ ] allow embedding documents ([[zettelkasten]] forks)
