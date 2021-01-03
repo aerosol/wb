@@ -11,7 +11,7 @@
   - simple theming
     - three tiny [[templates]] ought to be enough for everybody
     - a small (almost) classless
-      [stylesheet](https://github.com/aerosol/wb/blob/main/priv/_static/css/mvp.css) provided
+      [stylesheet](https://github.com/aerosol/wb/blob/main/priv/_static/css/mvp.css) provided, with Dark Mode variant :sunglasses:
     - replace the above with your own in a matter of minutes
   - basic [[breadcrumbs]]
   - auto-indexing [[directories]]
