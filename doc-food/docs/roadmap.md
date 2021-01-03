@@ -24,6 +24,8 @@
   - [ ] better tests (+ renderer)
   - [ ] final shape of [[title]] resolution
   - [ ] (optional) icons for links (external, directories, documents)
+  - [ ] ignore .files and .dirs
+  - [ ] add basic error/alert for missing templates
 
 ## v1.0.0:
 
