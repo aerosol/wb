@@ -2,15 +2,20 @@
 
   - no JavaScript whatsoever
   - ready to use out of the box
-    - aims to work with your existing markdown notes/knowledge base
+    - no configuration (yet :sweat_smile:)
+    - simple [[installation]], no fancy options, servers, build pipelines...
+    - aims to render your _existing_ markdown notes/knowledge base nicely, with
+      minimal effort
+  - supports popular markdown flavors in your [[documents]]
+  - various ways of [[title]] extraction
   - simple theming
-    - three [[templates]] ought to be enough for everybody
-    - a tiny classless stylesheet provided
-    - super easy to modify
-    - auto-indexing directories
-    - EEx template language if you really want to customise it
-  - smart [[wikilinks]]
-  - [[backlinks]] support
-  - [[emoji]]
+    - three tiny [[templates]] ought to be enough for everybody
+    - a small (almost) classless
+      [stylesheet](https://github.com/aerosol/wb/blob/main/priv/_static/css/mvp.css) provided
+    - replace the above with your own in a matter of minutes
+  - basic [[breadcrumbs]]
+  - auto-indexing [[directories]]
+  - [[wikilinks]] and [[backlinks]]
+  - [[emoji]] :muscle:
 
-> See also: [[roadmap]]
+> With more to come -- see: [[roadmap]]

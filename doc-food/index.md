@@ -1,8 +1,7 @@
 # Welcome to Writer's Block!
 
   - :heart: a personal wiki (or [[exobrain]]) engine for hackers
-  - :notebook: simplistic markdown processor with [[zettelkasten]] flavor
-  - :notebook_with_decorative_cover: a tool for software documentation
+  - :notebook: ~~simplistic~~ opinionated markdown processor with [[zettelkasten]] flavor
   - :page_with_curl: wicked fast static site generator
   - :open_hands: open source and always free as in freedom
 

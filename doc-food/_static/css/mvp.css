@@ -543,3 +543,8 @@ main, header {
         --color-text-secondary: #4e5173;
     }
 }
+
+a.footnote {
+  font-size: x-small;
+  vertical-align: super;
+}
