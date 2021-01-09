@@ -76,8 +76,21 @@ defmodule WB.CLI do
   end
 
   defp generate(layout_root, build_root, domain) do
-    layout_root
-    |> WB.Layout.read()
-    |> WB.Renderer.render_layout(build_root, domain)
+    templates = [
+      "_index.html",
+      "_single.html",
+      "_main.html"
+    ]
+
+    templates_present? = Enum.all?(templates, &File.exists?(Path.join(layout_root, &1)))
+
+    if templates_present? do
+      layout_root
+      |> WB.Layout.read()
+      |> WB.Renderer.render_layout(build_root, domain)
+    else
+      XmasTree.warn("Make sure templates exist in #{layout_root}", "Perhaps run `wb new` first?")
+      System.stop(1)
+    end
   end
 end
