@@ -2,12 +2,13 @@
 
 Document titles are resolved via whatever is found first, in this particular order:
 
-1. [[FrontMatter]] `title` attribute (not yet implemented, see [[roadmap]])
-2. First level-one header, e.g.:
+1. Through explit [[Wikilinks]] titles using the `|` syntax
+1. [[FrontMatter]] `title` attribute
+1. First level-one header, e.g.:
   ```
   # This is my document
   ```
-3. Fallback to markdown file basename
+1. Fallback to markdown file basename
 
 ## Example
 

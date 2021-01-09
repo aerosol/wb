@@ -163,26 +163,30 @@ defmodule WB.Renderer do
   end
 
   def expand_links(doc, layout, domain) do
-    Enum.reduce(doc.refs, doc.raw, fn {match, path}, acc ->
+    Enum.reduce(doc.refs, doc.raw, fn link, acc ->
       href =
         layout
-        |> Layout.any_by_path(path)
-        |> to_link(domain)
+        |> Layout.any_by_path(link.ref)
+        |> to_link(domain, link.title)
 
-      String.replace(acc, match, href)
+      String.replace(acc, link.match, href)
     end)
   end
 
-  defp to_link(%Document{} = doc, domain) do
+  defp to_link(%Document{} = doc, domain, title) do
+    title = title || doc.title
+
     """
-    [{#{doc.title}}](#{Path.join(domain, doc.relpath)}.html)
+    [{#{title}}](#{Path.join(domain, doc.relpath)}.html)
     """
     |> String.trim()
   end
 
-  defp to_link(%Dir{} = dir, domain) do
+  defp to_link(%Dir{} = dir, domain, title) do
+    title = title || dir.basename
+
     """
-    [{#{dir.basename}}](#{Path.join([domain, dir.relpath, "index.html"])})
+    [{#{title}}](#{Path.join([domain, dir.relpath, "index.html"])})
     """
     |> String.trim()
   end

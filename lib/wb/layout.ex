@@ -1,6 +1,7 @@
 defmodule WB.Layout do
   alias WB.Resources.Dir
   alias WB.Resources.Document
+  alias WB.Resources.Document.Link
   alias WB.Resources.StaticDir
   alias WB.Resources.StaticFile
   alias WB.XmasTree
@@ -69,7 +70,7 @@ defmodule WB.Layout do
     layout
     |> docs()
     |> Enum.filter(fn d ->
-      doc.path in Enum.map(d.refs, &elem(&1, 1))
+      doc.path in Enum.map(d.refs, & &1.ref)
     end)
   end
 
@@ -91,14 +92,14 @@ defmodule WB.Layout do
   defp patch_refs(%Document{links: [_ | _] = links} = doc, resources) do
     refs =
       links
-      |> Enum.reduce([], fn {match, target}, acc ->
-        with {:ok, found} <- find_ref(target, doc, resources) do
-          [{match, found} | acc]
+      |> Enum.reduce([], fn link, acc ->
+        with {:ok, found} <- find_ref(link.target, doc, resources) do
+          [Link.set_ref(link, found) | acc]
         else
           {:error, :not_found} ->
             XmasTree.warn(
               "Dead link detected.",
-              "Could not find reference for '#{match}' in #{doc.path}"
+              "Could not find reference for '#{link.match}' in #{doc.path}"
             )
 
             acc

@@ -177,12 +177,12 @@ defmodule WbTest do
 
     assert doc = Layout.doc_by_path(layout, "onefile.md")
 
-    assert doc.links == [
-             {"[[link1]]", "link1"},
-             {"[[CamelCaseLink]]", "CamelCaseLink"},
-             {"[[Some link]]", "Some link"},
-             {"[[../path/link.md]]", "../path/link.md"}
-           ]
+    assert [
+             %{target: "link1"},
+             %{target: "CamelCaseLink"},
+             %{target: "Some link"},
+             %{target: "../path/link.md"}
+           ] = doc.links
 
     assert doc.refs == []
   end
@@ -227,31 +227,14 @@ defmodule WbTest do
     mklayout(sample_layout, root)
     assert layout = Layout.read(root)
 
-    assert %{refs: [{_, r1}, {_, r2}, {_, r3}, {_, r4}, {_, r5}]} =
-             Layout.doc_by_path(layout, "index.md")
+    assert %{refs: [l1, l2, l3, l4, l5]} = Layout.doc_by_path(layout, "index.md")
 
-    assert r1 == "#{root}/foo.md"
-    assert r2 == "#{root}/CamelFile.md"
-    assert r3 == "#{root}/bar.md"
-    assert r4 == "#{root}/baz/some.md"
-    assert r5 == "#{root}/baz/bam.md"
+    assert l1.ref == "#{root}/foo.md"
+    assert l2.ref == "#{root}/CamelFile.md"
+    assert l3.ref == "#{root}/bar.md"
+    assert l4.ref == "#{root}/baz/some.md"
+    assert l5.ref == "#{root}/baz/bam.md"
   end
-
-  # describe "Renderer" do
-  # import WB.Renderer
-
-  # test "links render", %{root: root} do
-  # sample_layout = [
-  # {"root.md", "Root node"},
-  # {"foo/bar/baz.md", "Say [[hello]]"},
-  # {"foo/bar/hello.md", "# Hello world!"}
-  # ]
-
-  # mklayout(sample_layout, "wiki")
-
-  # assert renderer = WB.Renderer.render(root, "wiki/../_build")
-  # end
-  # end
 
   defp mklayout(layout, root) do
     true = String.starts_with?(root, System.tmp_dir!())

@@ -24,7 +24,8 @@ defmodule Wb.MixProject do
       {:libgraph, "~> 0.13.3"},
       {:earmark, "~> 1.4"},
       {:exmoji, "~> 0.3.0"},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:yaml_elixir, "~> 2.5"}
     ]
   end
 
