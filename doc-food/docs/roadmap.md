@@ -20,6 +20,7 @@
   - [x] [[FrontMatter]] parsing
   - [x] ignore .files and .dirs
   - [x] add basic error/alert for missing templates
+  - [ ] add files (e.g. images) resolution just like Obsidian does
   - [ ] documents graph
   - [ ] better dead-link detection
   - [ ] final tweaks to the default stylesheet
