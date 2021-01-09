@@ -172,6 +172,10 @@ defmodule WB.Layout do
       path = Path.join(dir, f)
 
       cond do
+        String.starts_with?(Path.basename(path), ".") ->
+          XmasTree.info("Ignoring hidden file", path)
+          acc
+
         File.dir?(path) and String.starts_with?(Path.basename(path), "_") ->
           [StaticDir.new(path, root) | acc]
 
