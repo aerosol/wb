@@ -16,16 +16,16 @@
   - [x] directories prefixed with `_` are copied over verbatim (for static
     resources)
   - [x] sort children alphabetically in index templates
-  - [ ] add support [[title|document titles override]] syntax
+  - [x] add support [[title|document titles override]] syntax
+  - [x] [[FrontMatter]] parsing
+  - [x] ignore .files and .dirs
+  - [x] add basic error/alert for missing templates
   - [ ] documents graph
-  - [ ] [[FrontMatter]] parsing
   - [ ] better dead-link detection
   - [ ] final tweaks to the default stylesheet
   - [ ] better tests (+ renderer)
   - [ ] final shape of [[title]] resolution
   - [ ] (optional) icons for links (external, directories, documents)
-  - [ ] ignore .files and .dirs
-  - [ ] add basic error/alert for missing templates
 
 ## v1.0.0:
 
