@@ -18,5 +18,5 @@ tags:
 ```
 
 Currently only `title` property is subject to special treatment (see [[title]]). 
-Other attributes are ignored, yet accessible in the [[Main Template]].
+Other attributes are ignored, yet accessible in the [[Single Template]].
 

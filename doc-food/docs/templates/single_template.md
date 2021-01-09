@@ -12,7 +12,8 @@ Template assigns available are [^1]:
     building absolute links.
   - `@reldir` - relative directory of the index
   - `@relpath` - relative path of the index
-  - `@doc` - the `WB.Resources.Document` struct
+  - `@doc` - currently raw
+    [`Document`](https://github.com/aerosol/wb/blob/main/lib/wb/resources/document.ex#L2) struct, providing access to, e.g. the [[front matter]] attributes
   - `@backlinks` - a list of two element tuples consisting of `href` and
     link `title`. See [[backlinks]] for more information.
 

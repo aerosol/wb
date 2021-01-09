@@ -16,8 +16,6 @@ Template assigns available are [^1]:
   - `@relpath` - relative path of the index
   - any assigns passed to [[Index Template]] or [[Single Template]], depending
     on which is being rendered
-  - `@doc` - currently raw
-    [`Document`](https://github.com/aerosol/wb/blob/main/lib/wb/resources/document.ex#L2) struct, providing access to, e.g. the [[front matter]] attributes
 
 ## Default contents
 
