@@ -16,7 +16,7 @@ defmodule WB.Resources.Document do
             render: nil,
             front_matter: nil
 
-  @link_re ~r/\[\[(?<link>[[:alnum:]\s\.\/]+)([\|]{1}(?<title>[[:alnum:]\s\.-]+))?\]\]/m
+  @link_re ~r/\[\[(?<link>[[:alnum:]\s\.\/\-\_]+)([\|]{1}(?<title>[[:alnum:]\s\.\-\_]+))?\]\]/m
 
   def new(path, root, templates) do
     root = Path.expand(root)

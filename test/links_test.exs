@@ -31,4 +31,11 @@ defmodule LinksTest do
              [[a|A]] and [[b|B]] and [[c]] and [[doo|foo]]
              """)
   end
+
+  test "links can have hyphens and underscores and dots" do
+    assert [%Link{target: "foo-bar_baz.md"}] = Document.extract_links("[[foo-bar_baz.md]]")
+
+    assert [%Link{target: "foo-bar_baz.md", title: "foo-bar_baz.md"}] =
+             Document.extract_links("[[foo-bar_baz.md|foo-bar_baz.md]]")
+  end
 end
