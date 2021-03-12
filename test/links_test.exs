@@ -19,4 +19,16 @@ defmodule LinksTest do
              }
            ] = Document.extract_links("Some [[link|Overridden Title]]")
   end
+
+  test "many links in one go" do
+    assert [
+             %Link{title: "A", target: "a"},
+             %Link{title: "B", target: "b"},
+             %Link{title: nil, target: "c"},
+             %Link{title: "foo", target: "doo"}
+           ] =
+             Document.extract_links("""
+             [[a|A]] and [[b|B]] and [[c]] and [[doo|foo]]
+             """)
+  end
 end
