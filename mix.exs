@@ -5,7 +5,7 @@ defmodule Wb.MixProject do
     [
       app: :wb,
       version: "0.2.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       escript: escript(),
