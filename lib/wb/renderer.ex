@@ -190,7 +190,7 @@ defmodule WB.Renderer do
     title = title || doc.title
 
     """
-    [{#{title}}](#{Path.join(domain, doc.relpath)}.html)
+    [#{title}](#{Path.join(domain, doc.relpath)}.html)
     """
     |> String.trim()
   end
@@ -199,7 +199,7 @@ defmodule WB.Renderer do
     title = title || dir.basename
 
     """
-    [{#{title}}](#{Path.join([domain, dir.relpath, "index.html"])})
+    [#{title}](#{Path.join([domain, dir.relpath, "index.html"])})
     """
     |> String.trim()
   end
