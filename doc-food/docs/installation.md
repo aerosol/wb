@@ -30,6 +30,15 @@ $ wb gen my-wiki /tmp/my-wiki-dev
 You can now visit `/tmp/my-wiki-dev/index.html` file in your browser to get
 started.
 
+Because `wb` comes with no built-in development server by design, you can automate your
+site generation using the standard unix tools, for example:
+
+```
+$ while true; do
+wb gen my-wiki /tmp/my-wiki-dev && sleep 1
+done
+```
+
 ## Generate for the internets
 
 If you wish to deploy your site, you need to provide `wb gen` with a third

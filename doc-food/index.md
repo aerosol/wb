@@ -9,7 +9,7 @@
 
   - [[features]] for general overview
   - [[installation]] :rocket:
-  - [[docs]] for specific HOWTOs
+  - [[docs|Documentation]] for specific HOWTOs
   - [[roadmap]] for planned features
   - [[license]]
   - [[contribute]]

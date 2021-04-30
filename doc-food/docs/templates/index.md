@@ -1,8 +1,6 @@
 # Templates
 
-Default Writer's Block looks makes use of: 
-  - [MVP.CSS](https://andybrewer.github.io/mvp/) by Andy Brewer
-  - [Charter font](https://practicaltypography.com/charter.html)
+Default Writer's Block installation makes use of a tiny CSS sheet, a remix of [https://bestmotherfucking.website/](https://bestmotherfucking.website/)
 
 `wb` comes with three templates out of the box:
 
@@ -14,14 +12,12 @@ Default Writer's Block looks makes use of:
 
 The only requirement is, all three must exist at least in your [[layout root]].
 
-You are free to edit them in whatever way you like if you don't like the
-default looks `wb` provides (this is by the way work in progress as seen in
-the [[roadmap]]) 
+You are free to edit them, if you don't like the
+default looks `wb` provides.
 
 ## Templates resolution
 
-For each subdirectory containing your markdown documents you are free to
-override any of the templates from the top-level [[layout root]].
+For each subdirectory containing your markdown documents you can override any of the templates from the top-level [[layout root]].
 
 Say, your [[layout root]] is structured as follows:
 
@@ -52,8 +48,8 @@ my-wiki
 │   ├── index.md
 │   ├── drafts
 │   │   ├── index.md
-│   │   ├── _single.html
-│   │   ├── _main.html
+│   │   ├── _single.html   <- here
+│   │   ├── _main.html     <- here
 │   │   ├── draft01.md
 │   │   ├── draft02.md
 │   │   └── draft03.md
