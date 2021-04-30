@@ -25,7 +25,7 @@ defmodule WB.Renderer do
       children =
         layout
         |> Layout.list_children(dir)
-        |> Enum.reduce(%{docs: [], dirs: [], files: []}, fn
+        |> Enum.reduce(%{docs: [], dirs: [], files: [], images: []}, fn
           %Document{title: title, relpath: relpath}, acc ->
             %{
               acc
@@ -37,8 +37,21 @@ defmodule WB.Renderer do
           %Dir{basename: basename, relpath: relpath}, acc ->
             %{acc | dirs: [%{name: basename, href: Path.join(domain, relpath)} | acc.dirs]}
 
-          %StaticFile{basename: basename, relpath: relpath}, acc ->
-            %{acc | files: [%{name: basename, href: Path.join(domain, relpath)} | acc.files]}
+          %StaticFile{image?: false, basename: basename, relpath: relpath}, acc ->
+            %{
+              acc
+              | files: [
+                  %{name: basename, href: Path.join(domain, relpath)} | acc.files
+                ]
+            }
+
+          %StaticFile{image?: true, basename: basename, relpath: relpath, meta: meta}, acc ->
+            %{
+              acc
+              | images: [
+                  %{name: basename, href: Path.join(domain, relpath), meta: meta} | acc.images
+                ]
+            }
         end)
 
       XmasTree.warn("Dir #{dir.reldir} has no index.", inspect(children))

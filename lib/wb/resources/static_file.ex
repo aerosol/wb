@@ -5,7 +5,9 @@ defmodule WB.Resources.StaticFile do
             reldir: nil,
             relpath: nil,
             root: nil,
-            type: nil
+            type: nil,
+            meta: nil,
+            image?: false
 
   def new(path, root) do
     root = Path.expand(root)
@@ -17,6 +19,9 @@ defmodule WB.Resources.StaticFile do
     relpath = Path.join(reldir, basename)
     type = Path.extname(path) |> String.downcase()
 
+    image? = type in [".jpeg", ".jpg", ".png"]
+    exif = if image?, do: read_exif(path)
+
     false = String.starts_with?(basename, "_")
 
     %__MODULE__{
@@ -26,7 +31,9 @@ defmodule WB.Resources.StaticFile do
       reldir: reldir,
       relpath: relpath,
       root: root,
-      type: type
+      type: type,
+      image?: image?,
+      meta: exif
     }
   end
 
@@ -35,5 +42,14 @@ defmodule WB.Resources.StaticFile do
 
   defp relative_to(dirname, root) do
     Path.relative_to(dirname, root)
+  end
+
+  defp read_exif(path) do
+    with {:ok, exif} <- Exexif.exif_from_jpeg_file(path) do
+      exif
+    else
+      _ ->
+        nil
+    end
   end
 end
