@@ -61,14 +61,6 @@ defmodule WB.CLI do
         Templates.Defaults.stylesheet()
       )
 
-    for {font_filename, font} <- Templates.Defaults.font_files() do
-      :ok =
-        File.write!(
-          Path.join(layout_root, "_static/fonts/#{font_filename}"),
-          font
-        )
-    end
-
     XmasTree.success(
       "Done! To generate run:",
       "wb gen #{layout_root} /tmp/test"

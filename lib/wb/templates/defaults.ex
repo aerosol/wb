@@ -32,18 +32,4 @@ defmodule WB.Templates.Defaults do
     If in doubt, check out the [docs](https://mtod.org/wb).
     """
   end
-
-  def font_files() do
-    unquote(
-      [
-        "charter_regular.woff",
-        "charter_bold.woff",
-        "charter_italic.woff",
-        "charter_bold_italic.woff"
-      ]
-      |> Enum.map(fn ff ->
-        {ff, File.read!("priv/_static/fonts/#{ff}")}
-      end)
-    )
-  end
 end
