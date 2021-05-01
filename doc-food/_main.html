@@ -5,7 +5,7 @@
     <title>Writer's Block</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="<%= Path.join(@domain, "_static/css/mvp.css") %>">
+    <link rel="stylesheet" type="text/css" href="<%= Path.join(@domain, "_static/css/mvp.css") %>?<%= DateTime.to_unix(DateTime.utc_now()) %>">
     <style>
       a[href^="http://"]:not([href*="<%= @domain %>"]):after,
       a[href^="https://"]:not([href*="<%= @domain %>"]):after{
