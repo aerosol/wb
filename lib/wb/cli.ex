@@ -22,6 +22,8 @@ defmodule WB.CLI do
   """
 
   def main(args) do
+    :erlang.system_flag(:backtrace_depth, 20)
+
     case parse(args) do
       {[], ["new", layout_root], []} ->
         new(layout_root)
