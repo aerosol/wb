@@ -7,6 +7,7 @@
 
 ### Quick links:
 
+  - [[philosophy]] and [[use cases]]
   - [[features]] for general overview
   - [[installation]] and [[usage]] :rocket:
   - [[docs|Documentation]] for specific topics
@@ -22,6 +23,8 @@ Everyone needs to write their own static page generator and this one is special
 ## Can I see a demo?
 
 You're looking at it! `wb` dogfooding in action.
+
+![](cli.png)
 
 ## Acknowledgements
 

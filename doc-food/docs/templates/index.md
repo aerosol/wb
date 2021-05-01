@@ -1,7 +1,9 @@
 # Templates
 
 Default Writer's Block installation makes use of a tiny CSS sheet, a remix of [https://bestmotherfucking.website/](https://bestmotherfucking.website/).
-The stylesheet is located at `_static/css` directory.
+
+The stylesheet is located at `_static/css` directory and is copied over to your
+[[layout root]] upon initialising your site with `wb new` (see: [[usage]]).
 
 `wb` comes with three templates out of the box:
 

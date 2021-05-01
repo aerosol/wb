@@ -20,7 +20,7 @@
   <nav>
     <ul class="breadcrumbs">
       <li>
-        <a href="<%= Path.join(@domain, "index.html") %>">Home</a>
+        <a href="<%= Path.join(@domain, "index.html") %>">home</a>
       </li>
       <%= for {href, crumb} <- breadcrumbs(@relpath, @domain) do %>
         <%= if href != Path.join(@domain, "index.html") do %>

@@ -52,4 +52,11 @@ All the links `wb` generates will be prefixed with it.
 $ wb gen my-wiki /tmp/my-wiki-prod https://example.com/my-wiki
 ```
 
+It is up to you to choose your preferred method of deployment. For example, 
+if you have a VPS with SSH access you can use rsync:
+
+```
+rsync -avz -e ssh /tmp/my-wiki my-vps:/home/weberver/my-wiki/
+```
+
 That's it, enjoy.
