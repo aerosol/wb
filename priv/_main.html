@@ -12,29 +12,6 @@
         padding: 0 4px 0 4px;
         content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNqEkIEJwCAMBGPpEs7hHK6hY+gauoZr6Bo6RtqEWkxb6EMQnuM/USEirIoxSmOKwDkhBEwp4VPkb4801Xun9xW4e+9FldYarLUvkBPPOp4JGWOgtSaSt6VWQKUU9nPOEiSIgAmNMdadFTjn7utqrXwh6fLvH9nXhamW5ksMnpfDnw4BBgBfunO056MmqAAAAABJRU5ErkJggg==);
       }
-      @font-face {
-        font-family: "charter";
-        src: url("<%= Path.join(@domain, "_static/fonts/charter_regular.woff") %>") format('woff');
-      }
-
-      @font-face {
-        font-family: "charter";
-        src: url("<%= Path.join(@domain, "_static/fonts/charter_bold.woff") %>") format('woff');
-        font-weight: bold;
-      }
-
-      @font-face {
-        font-family: "charter";
-        src: url("<%= Path.join(@domain, "_static/fonts/charter_bold_italic.woff") %>") format('woff');
-        font-weight: bold;
-        font-style: italic;
-      }
-
-      @font-face {
-        font-family: "charter";
-        src: url("<%= Path.join(@domain, "_static/fonts/charter_italic.woff") %>") format('woff');
-        font-style: italic;
-      }
     </style>
 </head>
 
@@ -43,13 +20,19 @@
   <nav>
     <ul class="breadcrumbs">
       <li>
-        <a href="<%= Path.join(@domain, "index.html") %>">Home</a>
+        <a href="<%= Path.join(@domain, "index.html") %>">home</a>
       </li>
       <%= for {href, crumb} <- breadcrumbs(@relpath, @domain) do %>
+        <%= if href != Path.join(@domain, "index.html") do %>
         <li>
-          <a href="<%= href %>"><%= crumb %></a>
+          <%= if crumb == "permalink" do %>
+            <a href="<%= href %>"><%= @basename %></a>
+          <% else %>
+            <a href="<%= href %>"><%= crumb %></a>
+          <% end %>
         </li>
-  <% end %>
+        <% end %>
+      <% end %>
     </ul>
   </nav>
 </header>
@@ -59,17 +42,11 @@
 </main>
 
 <footer>
-  <center>
-    <small>
-    <p>
-      Generated using <strong>Writer's Block</strong> - open source personal
-      wiki engine.
-    </p>
-    <p>
-      &copy; 2021 Adam Rutkowski
-    </p>
-    </small>
-  </center>
+  <p>
+    Generated using <strong><a href="https://mtod.org/wb">Writer's Block</a></strong> - open source personal wiki engine.
+    <br/>
+    &copy; 2021 Adam Rutkowski
+  </p>
 </footer>
 </body>
 </html>

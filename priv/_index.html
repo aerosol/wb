@@ -25,6 +25,39 @@
 </aside>
 <% end %>
 
+<%= if @children.images != [] do %>
+<aside>
+  <h2>Images:</h2>
+  <%= for image <- Enum.sort_by(@children.images, & &1.name) do %>
+  <figure>
+    <a href="<%= image.href %>"><img src="<%= image.href %>"/></a>
+    <%= if image.meta do %>
+    <figcaption>
+    Shot with <%= image.meta.exif.lens_model %> on <%= image.meta.exif.datetime_digitized %>
+      <details>
+        <summary>Full EXIF</summary>
+        <table>
+          <tbody>
+          <%= for {k, v} <- image.meta.exif do %>
+          <tr>
+            <th><code><%= k %></code></th>
+            <td><code><%= if is_binary(v), do: v, else: inspect(v) %></code></td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </details>
+    </figcaption>
+    <% else %>
+    <figcaption>
+      <%= image.name %>
+    </figcaption>
+    <% end %>
+  </figure>
+  <% end %>
+</aside>
+<% end %>
+
 <%= if @children.dirs != [] do %>
 <aside>
   <h2>Sub-sections:</h2>
@@ -43,9 +76,7 @@
 
 <section>
 <small>
-  <center>
     Index generated automatically.
-  </center>
 </small>
 </section>
 

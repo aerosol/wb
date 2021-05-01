@@ -13,18 +13,11 @@
       </li>
   <% end %>
   </ul>
-
-  <a href="https://github.com/aerosol/wb/edit/main/doc-food/<%= @relpath %>.md">Edit this page</a>
-
 <% end %>
 
 <hr/>
 
-<section>
-  <small>
-    <center>
-      fingerprint <code><%= fingerprint(@doc) %></code> -- generated for
-      <strong><%= @domain %></strong> at <%= DateTime.utc_now() %><br/>
-    </center>
-  </small>
-</section>
+<p>
+    fingerprint <code><%= fingerprint(@doc) %></code> -- generated for
+    <code><%= @domain %></code> at <%= DateTime.utc_now() %><br/><br/>
+</p>
