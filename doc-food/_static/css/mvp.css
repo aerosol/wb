@@ -5,6 +5,7 @@
   --link-color: blue;
   --highlighted-color: #000;
   --alternative-highlight-color: #eee;
+  --highlight-pen-color: #f7f4c8;
 }
 
 @media (prefers-color-scheme: dark){
@@ -15,6 +16,7 @@
     --link-color: #539BF5;
     --highlighted-color: #fff;
     --alternative-highlight-color: #282c33;
+    --highlight-pen-color: #222;
   }
 }
 
@@ -74,9 +76,11 @@ nav ul li+li:before {
 
 blockquote {
   font-family: serif;
-  margin: 1em;
-  padding: 0;
+  margin: 0;
+  padding: 0.5em 2em;
   line-height: 1.6;
+  background-color: var(--highlight-pen-color);
+  border-radius: 12px;
 }
 
 
