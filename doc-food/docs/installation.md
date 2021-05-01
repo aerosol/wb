@@ -10,12 +10,12 @@
 You can install <a href="https://elixir-lang.org">Elixir</a> with <a href="https://github.com/asdf-vm/asdf">asdf</a>:
 
 <code>
-$ git clone https://github.com/aerosol/wb.git main && cd wb && asdf install
+$ git clone https://github.com/aerosol/wb.git develop && cd wb && asdf install
 </code>
 </details>
 
 ```
-$ mix escript.install github aerosol/wb branch main
+$ mix escript.install github aerosol/wb branch develop
 ```
 
 Next, head over to [[usage]].
