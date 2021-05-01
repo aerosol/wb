@@ -1,15 +1,5 @@
 # Installation
 
-There are two methods of getting `wb` running on your machine.
-
-## Install via Docker
-
-```
-$ git clone https://github.com/aerosol/wb.git
-$ docker build -t wb .
-$ alias wb='docker run wb'
-```
-
 ## Install via [hex](https://hex.pm/) package manager:
 
 ### Prerequisities:
@@ -18,6 +8,46 @@ $ alias wb='docker run wb'
 
 ```
 $ mix escript.install github aerosol/wb branch main
+```
+
+## Install with Docker
+
+It is possible to run `wb` from a docker container if you don't like the idea
+of installing the Elixir/OTP runtime on your own machine. This requires you to
+mount your [[layout root]] and [[build root]] directories so that the container
+can read and write them.
+
+### Build docker image
+
+```
+$ git clone https://github.com/aerosol/wb.git main
+$ cd wb && docker build -t wb .
+```
+
+### Run `wb` in a container
+
+First, make sure your [[build root]] is created locally.
+
+```
+$ export WB_LOCAL_BUILD_ROOT=/tmp/my-wiki
+$ mkdir $WB_LOCAL_BUILD_ROOT
+```
+
+Run `wb` from the container, mounting both [[layout root]] and [[build root]].
+The third argument - domain, points at your local filesystem so the website is
+available on your machine.
+
+```
+$ export WB_LOCAL_LAYOUT_ROOT=/path/to/your/local/markdown/dir
+
+$ docker run --rm -it \
+    --mount type=bind,source=${WB_LOCAL_LAYOUT_ROOT},target=/layout_root \
+    wb new /layout_root
+
+$ docker run --rm -it \
+    --mount type=bind,source=${WB_LOCAL_LAYOUT_ROOT},target=/layout_root \
+    --mount type=bind,source="/tmp/my-wiki/",target="/build_root/" \
+    wb gen /layout_root /build_root ${WB_LOCAL_BUILD_ROOT}
 ```
 
 ## Create your first site
@@ -31,7 +61,11 @@ We'll create a new [[layout root]] in `my-wiki` directory.
 $ wb new my-wiki
 ```
 
-Great, the next step is to drop your markdown docs into `my-wiki` directory and
+> :warning: You can run `wb new` on your existing markdown files directory. It won't
+override anything, only copy the default [[templates]] to your [[layout root]] and
+this is all you need to generate the site.
+
+The next step is to drop your markdown docs into `my-wiki` directory and
 generate the HTML site in some [[build root]], for example `/tmp/my-wiki-dev`:
 
 ```
@@ -40,12 +74,6 @@ $ wb gen my-wiki /tmp/my-wiki-dev
 
 You can now visit `/tmp/my-wiki-dev/index.html` file in your browser to get
 started.
-
-### Existing markdown database
-
-You can run `wb new` on your existing markdown files directory. It won't
-override anything, only copy the [[templates]] to your [[layout root]] and
-this is all you need to generate the site.
 
 ### Develop
 

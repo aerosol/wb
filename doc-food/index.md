@@ -2,7 +2,7 @@
 
   - :heart: a personal wiki (or [[exobrain]]) engine for hackers
   - :notebook: ~~simplistic~~ opinionated markdown processor with [[zettelkasten]] flavor
-  - :page_with_curl: wicked fast static site generator
+  - :page_with_curl: minimalistic static site generator
   - :open_hands: open source and always free as in freedom
 
 ### Quick links:

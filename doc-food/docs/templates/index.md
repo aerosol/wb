@@ -1,6 +1,7 @@
 # Templates
 
-Default Writer's Block installation makes use of a tiny CSS sheet, a remix of [https://bestmotherfucking.website/](https://bestmotherfucking.website/)
+Default Writer's Block installation makes use of a tiny CSS sheet, a remix of [https://bestmotherfucking.website/](https://bestmotherfucking.website/).
+The stylesheet is located at `_static/css` directory.
 
 `wb` comes with three templates out of the box:
 
@@ -11,6 +12,8 @@ Default Writer's Block installation makes use of a tiny CSS sheet, a remix of [h
     containing your markdown document(s) content
 
 The only requirement is, all three must exist at least in your [[layout root]].
+
+Both stylesheet and the templates are copied over to your [[layout root]] when `wb new` is executed during [[installation]].
 
 You are free to edit them, if you don't like the
 default looks `wb` provides.
