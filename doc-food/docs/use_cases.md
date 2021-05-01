@@ -5,5 +5,6 @@
   - Blogs
   - Knowledge bases
   - Software documentation
+  - RFCs
   - [[wikilinks|Wikis]]
   - [[zettelkasten]] notes repositories
