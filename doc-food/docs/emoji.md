@@ -852,5 +852,7 @@
 
 ## Available emoji short names
 
+```
 <%= all %>
+```
 

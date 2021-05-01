@@ -15,7 +15,7 @@ $ wb new my-wiki
 override anything, only copy the default [[templates]] to your [[layout root]] and
 this is all you need to generate the site.
 
-The next step is to drop your markdown docs into `my-wiki` directory and
+The next step is to drop your [[documents|markdown files]] into `my-wiki` directory and
 generate the HTML site in some [[build root]], for example `/tmp/my-wiki-dev`:
 
 ```
@@ -27,7 +27,7 @@ started.
 
 ### Develop
 
-Because `wb` comes with no built-in development server by design, you can automate your
+Because `wb` comes with no built-in development server by [[philosophy|design]], you can automate your
 site generation using the standard unix tools, for example:
 
 ```
@@ -39,7 +39,7 @@ done
 > :scream_cat: But I really want to run a web server locally!
 
 Use one, use any. E.g. you can run `python -m http.server` in your [[build root]]. 
-Just make sure the generated site knows about the domain you're serving
+Just make sure the generated site refers to the fully qualified URL you're serving
 it from, in this case `http://0.0.0.0:8000` (see the third argument desciption in the section below).
 
 ## Generate for the internets

@@ -9,4 +9,4 @@
   - :gem: Embedded [EEx](https://hexdocs.pm/eex/EEx.html) support for advanced hacking
   - :page_with_curl: Customizable [[templates]]
 
-> :eyes: See also: [[philosophy]], [[use cases]], [[roadmap]]
+> :eyes: See also: [[philosophy]], [[use cases]], [[ideas]]

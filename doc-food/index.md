@@ -9,11 +9,11 @@
 
   - [[philosophy]] and [[use cases]]
   - [[features]] for general overview
+  - [[ideas|Ideas]] for _maybe_ upcoming features. Would you
+    like to [[contribute|help]]?
   - [[installation]] and [[usage]] :rocket:
   - [[docs|Documentation]] for specific topics
-  - [[roadmap]] for planned features
   - [[license]]
-  - [[contribute]]
 
 ## Why?
 
