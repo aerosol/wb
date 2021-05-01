@@ -36,6 +36,12 @@ wb gen my-wiki /tmp/my-wiki-dev && sleep 1
 done
 ```
 
+> :scream_cat: But I really want to run a web server locally!
+
+Use one, use any. E.g. you can run `python -m http.server` in your [[build root]]. 
+Just make sure the generated site knows about the domain you're serving
+it from, in this case `http://0.0.0.0:8000` (see the third argument desciption in the section below).
+
 ## Generate for the internets
 
 If you wish to deploy your site, you need to provide `wb gen` with a third

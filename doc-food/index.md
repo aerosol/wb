@@ -8,8 +8,8 @@
 ### Quick links:
 
   - [[features]] for general overview
-  - [[installation]] :rocket:
-  - [[docs|Documentation]] for specific HOWTOs
+  - [[installation]] and [[usage]] :rocket:
+  - [[docs|Documentation]] for specific topics
   - [[roadmap]] for planned features
   - [[license]]
   - [[contribute]]
