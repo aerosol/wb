@@ -23,10 +23,16 @@
         <a href="<%= Path.join(@domain, "index.html") %>">Home</a>
       </li>
       <%= for {href, crumb} <- breadcrumbs(@relpath, @domain) do %>
+        <%= if href != Path.join(@domain, "index.html") do %>
         <li>
-          <a href="<%= href %>"><%= crumb %></a>
+          <%= if crumb == "permalink" do %>
+            <a href="<%= href %>"><%= @basename %></a>
+          <% else %>
+            <a href="<%= href %>"><%= crumb %></a>
+          <% end %>
         </li>
-  <% end %>
+        <% end %>
+      <% end %>
     </ul>
   </nav>
 </header>
