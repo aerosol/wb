@@ -3,23 +3,22 @@
 case $1 in
 
   new)
-  WB_LOCAL_LAYOUT_ROOT=$2
+  WB_LOCAL_LAYOUT_ROOT=$(realpath $2)
   mkdir -p $WB_LOCAL_LAYOUT_ROOT
-  docker run --rm -it \
-    --mount type=bind,source=${WB_LOCAL_LAYOUT_ROOT},target=/layout_root \
-    wb new /layout_root
+
+  docker run --rm -it -v ${WB_LOCAL_LAYOUT_ROOT}:/layout_root wb new /layout_root
   ;;
 
   gen)
-  WB_LOCAL_LAYOUT_ROOT=$2
-  WB_LOCAL_BUILD_ROOT=$3
+  WB_LOCAL_LAYOUT_ROOT=$(realpath $2)
+  WB_LOCAL_BUILD_ROOT=$(realpath $3)
   WB_BUILD_DOMAIN=${4:-${WB_LOCAL_BUILD_ROOT}}
   mkdir -p $WB_LOCAL_LAYOUT_ROOT
   mkdir -p $WB_LOCAL_BUILD_ROOT
   docker run --rm -it \
-    --mount type=bind,source=${WB_LOCAL_LAYOUT_ROOT},target=/layout_root \
-    --mount type=bind,source=${WB_LOCAL_BUILD_ROOT},target=/build_root/ \
-    wb gen /layout_root /build_root ${WB_LOCAL_BUILD_ROOT}
+    -v ${WB_LOCAL_LAYOUT_ROOT}:/layout_root \
+    -v ${WB_LOCAL_BUILD_ROOT}:/build_root/ \
+    wb gen /layout_root /build_root ${WB_BUILD_DOMAIN}
   ;;
 
   *)
