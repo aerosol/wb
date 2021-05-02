@@ -6,7 +6,7 @@ case $1 in
   WB_LOCAL_LAYOUT_ROOT=$(realpath $2)
   mkdir -p $WB_LOCAL_LAYOUT_ROOT
 
-  docker run --rm -it -v ${WB_LOCAL_LAYOUT_ROOT}:/layout_root wb new /layout_root
+  docker run --rm -it -v ${WB_LOCAL_LAYOUT_ROOT}:${WB_LOCAL_LAYOUT_ROOT} wb new ${WB_LOCAL_LAYOUT_ROOT}
   ;;
 
   gen)
@@ -16,9 +16,9 @@ case $1 in
   mkdir -p $WB_LOCAL_LAYOUT_ROOT
   mkdir -p $WB_LOCAL_BUILD_ROOT
   docker run --rm -it \
-    -v ${WB_LOCAL_LAYOUT_ROOT}:/layout_root \
-    -v ${WB_LOCAL_BUILD_ROOT}:/build_root/ \
-    wb gen /layout_root /build_root ${WB_BUILD_DOMAIN}
+    -v ${WB_LOCAL_LAYOUT_ROOT}:${WB_LOCAL_LAYOUT_ROOT} \
+    -v ${WB_LOCAL_BUILD_ROOT}:${WB_LOCAL_BUILD_ROOT} \
+    wb gen ${WB_LOCAL_LAYOUT_ROOT} ${WB_LOCAL_BUILD_ROOT} ${WB_BUILD_DOMAIN}
   ;;
 
   *)
