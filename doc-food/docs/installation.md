@@ -1,6 +1,25 @@
 # Installation
 
-## Install via [hex](https://hex.pm/) package manager:
+## Install with Docker
+
+### Build the image:
+
+```
+$ git clone --branch develop https://github.com/aerosol/wb.git
+$ cd wb && docker build -t wb .
+```
+
+#### Make the wrapper script available
+
+```
+$ export PATH=$PATH:${PWD}/bin
+```
+
+Next, head over to [[usage]].
+
+## Install via [hex](https://hex.pm/) package manager
+
+Alternatively you can install `wb` with `mix`.
 
 ### Prerequisities:
 
@@ -17,11 +36,4 @@ $ git clone https://github.com/aerosol/wb.git develop && cd wb && asdf install
 ```
 $ mix escript.install github aerosol/wb branch develop
 ```
-
-Next, head over to [[usage]].
-
-#### Install with Docker
-
-Alternatively, you can install `wb` with [[docker]] but please make sure to
-read the [[usage]] section first.
 

@@ -1,5 +1,28 @@
 # Usage
 
+## Verify your installation:
+
+```
+$ wb
+
+Writer's Block
+
+Usage:
+
+    wb [command]
+
+Available commands:
+
+    wb new [layout_root]
+    wb gen [layout_root] [build_root] [target_domain]
+
+Examples:
+
+    wb new my-wiki
+    wb gen my-wiki /tmp/my-wiki-dev # and navigate to file:///tmp/my-wiki-dev/index.html
+    wb gen my-wiki /tmp/my-wiki-prod https://example.com
+```
+
 ## Create your first site
 
 If all is well, at this point `wb` [escript](https://hexdocs.pm/mix/master/Mix.Tasks.Escript.Build.html) 
