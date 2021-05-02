@@ -9,10 +9,16 @@ $ git clone --branch develop https://github.com/aerosol/wb.git
 $ cd wb && docker build -t wb .
 ```
 
-#### Make the wrapper script available
+#### Make sure the wrapper script is available for execution
 
 ```
 $ export PATH=$PATH:${PWD}/bin
+```
+
+or
+
+```
+$ alias wb=${PWD}/bin/wb
 ```
 
 Next, head over to [[usage]].
