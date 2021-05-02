@@ -25,8 +25,7 @@ Examples:
 
 ## Create your first site
 
-If all is well, at this point `wb` [escript](https://hexdocs.pm/mix/master/Mix.Tasks.Escript.Build.html) 
-should be available for execution. You can now create your first site.
+You can now create your first site.
 
 We'll create a new [[layout root]] in `my-wiki` directory.
 
