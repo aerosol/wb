@@ -2,9 +2,9 @@
 
 `wb` can be used to maintain and generate:
 
-  - Blogs
+  - [[wikilinks|Wikis]]
   - Knowledge bases
+  - [[zettelkasten]] notes repositories
+  - Blogs
   - Software documentation
   - RFCs
-  - [[wikilinks|Wikis]]
-  - [[zettelkasten]] notes repositories

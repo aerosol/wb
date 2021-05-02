@@ -2,7 +2,7 @@
 
 ## Install with Docker
 
-Because Elixir does not allow us to distribute cross-platform binaries, docker
+Because Elixir does not allow us to build cross-platform binaries, docker
 is the recommended way of installation for non-Elixir hackers.
 
 ### Build the image:
