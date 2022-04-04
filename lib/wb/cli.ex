@@ -81,6 +81,10 @@ defmodule WB.CLI do
     if templates_present? do
       layout_root
       |> WB.Layout.read()
+      |> WB.Tags.write()
+
+      layout_root
+      |> WB.Layout.read()
       |> WB.Renderer.render_layout(build_root, domain)
     else
       XmasTree.warn("Make sure templates exist in #{layout_root}", "Perhaps run `wb new` first?")

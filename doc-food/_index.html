@@ -60,12 +60,20 @@
 
 <%= if @children.dirs != [] do %>
 <aside>
+<%= if @basename == "tags" do %>
+  <h2>Tags:</h2>
+<% else %>
   <h2>Sub-sections:</h2>
+<% end %>
   <ul>
   <%= for dir <- Enum.sort_by(@children.dirs, & &1.name) do %>
-  <li>
-    <a href="<%= dir.href %>/index.html"><%= dir.name %></a>
-  </li>
+    <li>
+      <%= if @basename == "tags" do %>
+        <a href="<%= dir.href %>/index.html">#<%= dir.name %></a>
+      <% else %>
+        <a href="<%= dir.href %>/index.html"><%= dir.name %></a>
+      <% end %>
+    </li>
   <% end %>
   </ul>
 </aside>
