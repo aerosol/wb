@@ -7,15 +7,16 @@ defmodule WB.Renderer do
   alias WB.XmasTree
 
   def render_layout(%Layout{} = layout, out_root, domain \\ "/") do
-    layout
-    |> Map.fetch!(:resources)
-    |> Enum.map(fn
-      %Document{} = document -> render_document(document, layout, domain)
-      %StaticFile{} = file -> file
-      %StaticDir{} = dir -> dir
-      %Dir{} = dir -> render_dir(dir, layout, domain)
-    end)
-    |> save(out_root)
+    :ok =
+      layout
+      |> Map.fetch!(:resources)
+      |> Enum.map(fn
+        %Document{} = document -> render_document(document, layout, domain)
+        %StaticFile{} = file -> file
+        %StaticDir{} = dir -> dir
+        %Dir{} = dir -> render_dir(dir, layout, domain)
+      end)
+      |> save(out_root)
 
     XmasTree.success("Generated site for domain: #{domain}", "Files saved to #{out_root}")
   end
