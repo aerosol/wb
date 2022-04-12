@@ -41,3 +41,13 @@ Optionally [[title|document titles]] can be overriden with special wikilinks syn
 [[link|Alternative Title]]
 ```
 
+### Linking to tags
+
+[[document tags]] can be linked using the same wikilinks syntax but with a hash
+symbol (`#`) prepended to the document title. Example:
+
+
+```
+[[#mytag]]
+```
+

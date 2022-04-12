@@ -1,7 +1,3 @@
-tags:
- - hello
- - world
----
 # Emoji expansions
 
 <% all =  Exmoji.all() |> Enum.sort_by(& &1.short_name) |> Enum.map(& ":#{&1.short_name}:") |> Enum.join("\n") %>

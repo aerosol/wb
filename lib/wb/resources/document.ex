@@ -17,7 +17,7 @@ defmodule WB.Resources.Document do
             front_matter: nil,
             tags: []
 
-  @link_re ~r/\[\[(?<link>[[:alnum:]\s\.\/\-\_]+)([\|]{1}(?<title>[[:alnum:]\s\.\-\_]+))?\]\]/m
+  @link_re ~r/\[\[(?<tag>#)?(?<link>[[:alnum:]\s\.\/\-\_]+)([\|]{1}(?<title>[[:alnum:]\s\.\-\_]+))?\]\]/m
 
   def new(path, root, templates) do
     root = Path.expand(root)
@@ -70,10 +70,13 @@ defmodule WB.Resources.Document do
     @link_re
     |> Regex.scan(body)
     |> Enum.map(fn
-      [match, target] ->
+      [match, "", target] ->
         Link.new(target: target, match: match)
 
-      [match, target, _, title] ->
+      [match, "#", target] ->
+        Link.new(target: target, match: match, title: "#" <> target)
+
+      [match, "", target, _, title] ->
         Link.new(target: target, match: match, title: title)
     end)
   end
