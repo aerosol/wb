@@ -62,8 +62,12 @@ defmodule WB.Resources.Document do
     end)
   end
 
-  def extract_tags(front_matter) do
+  def extract_tags(%{} = front_matter) do
     Map.get(front_matter, "tags", [])
+  end
+
+  def extract_tags(_) do
+    []
   end
 
   def extract_links(body) when is_binary(body) do

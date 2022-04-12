@@ -40,7 +40,7 @@ defmodule LinksTest do
   end
 
   test "tags" do
-    assert [%Link{title: nil, target: "#interesting", match: "[[#interesting]]"}] =
+    assert [%Link{title: "#interesting", target: "interesting", match: "[[#interesting]]"}] =
              Document.extract_links("[[#interesting]]")
   end
 end

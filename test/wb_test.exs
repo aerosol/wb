@@ -128,6 +128,35 @@ defmodule WbTest do
     assert Layout.doc_by_path(layout, "notitle.md").title == "notitle"
   end
 
+  test "tag indices are read", %{root: root} do
+    sample_layout = [
+      {"foo.md",
+       """
+       ---
+       tags:
+         - tag1
+         - tag2
+       ---
+       Foo
+       """},
+      {"bar.md",
+       """
+       ---
+       tags:
+         - tag2
+       ---
+       Bar
+       """}
+    ]
+
+    mklayout(sample_layout, root)
+
+    assert layout = Layout.read(root)
+
+    assert %{tags: ["tag1", "tag2"]} = Layout.doc_by_path(layout, "foo.md")
+    assert %{tags: ["tag2"]} = Layout.doc_by_path(layout, "bar.md")
+  end
+
   test "templates are tracked", %{root: root} do
     sample_layout = [
       {"_index.html", "<!-- whatever -->"},

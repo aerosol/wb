@@ -49,4 +49,26 @@ defmodule FrontMatterTest do
 
     assert {%{}, _} = FrontMatter.extract(data)
   end
+
+  test "excessive separators are ignored" do
+    data = """
+    ---
+    title: foo
+    ---
+
+    Hello
+
+    ---
+    title: bar
+    ---
+
+    ```
+    ---
+    title: baz
+    ---
+    ```
+    """
+
+    assert {%{"title" => "foo"}, _} = FrontMatter.extract(data)
+  end
 end
