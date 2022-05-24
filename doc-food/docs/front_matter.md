@@ -17,6 +17,9 @@ tags:
 # Bilbo
 ```
 
-Currently only `title` property is subject to special treatment (see [[title]]). 
+Currently only the following properties are subject to special treatment:
+  - `title` (see [[title]]) 
+  - `tags` (see [[document tags]]) 
+
 Other attributes are ignored, yet accessible in the [[Single Template]].
 

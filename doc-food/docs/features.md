@@ -1,7 +1,7 @@
 # Features
 
   - :card_index: Auto-indexing [[directories]] including [[images]] with EXIF extraction
-  - :link: [[wikilinks]] and [[backlinks]]
+  - :link: [[wikilinks]], [[document tags|Tags]] and [[backlinks]]
   - :newspaper: [[documents]] support popular markdown flavors
   - :abc: Various ways of [[title]] extraction
   - :bread: Basic [[breadcrumbs]]

@@ -14,9 +14,10 @@ defmodule WB.Resources.Document do
             reldir: nil,
             root: nil,
             render: nil,
-            front_matter: nil
+            front_matter: nil,
+            tags: []
 
-  @link_re ~r/\[\[(?<link>[[:alnum:]\s\.\/\-\_]+)([\|]{1}(?<title>[[:alnum:]\s\.\-\_]+))?\]\]/m
+  @link_re ~r/\[\[(?<tag>#)?(?<link>[[:alnum:]\s\.\/\-\_]+)([\|]{1}(?<title>[[:alnum:]\s\.\-\_]+))?\]\]/m
 
   def new(path, root, templates) do
     root = Path.expand(root)
@@ -43,7 +44,8 @@ defmodule WB.Resources.Document do
       dirname: dirname,
       raw: raw,
       reldir: reldir,
-      front_matter: front_matter
+      front_matter: front_matter,
+      tags: extract_tags(front_matter)
     }
   end
 
@@ -60,14 +62,25 @@ defmodule WB.Resources.Document do
     end)
   end
 
+  def extract_tags(%{} = front_matter) do
+    Map.get(front_matter, "tags", [])
+  end
+
+  def extract_tags(_) do
+    []
+  end
+
   def extract_links(body) when is_binary(body) do
     @link_re
     |> Regex.scan(body)
     |> Enum.map(fn
-      [match, target] ->
+      [match, "", target] ->
         Link.new(target: target, match: match)
 
-      [match, target, _, title] ->
+      [match, "#", target] ->
+        Link.new(target: target, match: match, title: "#" <> target)
+
+      [match, "", target, _, title] ->
         Link.new(target: target, match: match, title: title)
     end)
   end
