@@ -21,7 +21,7 @@ Template assigns available are [^1]:
 ## Default contents
 
 ```
-<%= File.read!("doc-food/_index.html") %>
+<%= File.read!(Path.join(@layout_root, "_index.html")) %>
 ```
 
 [^1]: These are subject to change before v1.0.0 launches

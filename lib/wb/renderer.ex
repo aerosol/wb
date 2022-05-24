@@ -81,7 +81,7 @@ defmodule WB.Renderer do
       document
       |> expand_links(layout, domain)
       |> expand_emojis()
-      |> EEx.eval_string()
+      |> EEx.eval_string(assigns: [layout_root: layout.root])
       |> Earmark.as_html!(footnotes: true)
 
     common_assigns = [

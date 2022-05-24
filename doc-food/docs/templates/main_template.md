@@ -20,7 +20,7 @@ Template assigns available are [^1]:
 ## Default contents
 
 ```
-<%= File.read!("doc-food/_main.html") %>
+<%= File.read!(Path.join(@layout_root, "_main.html")) %>
 ```
 
 ## Footnotes
