@@ -54,7 +54,7 @@ defmodule WB.Renderer do
             }
         end)
 
-      XmasTree.warn("Dir #{dir.reldir} has no index.", inspect(children))
+      XmasTree.warn("Dir #{dir.reldir} has no index.")
 
       common_assigns = [
         domain: domain,
