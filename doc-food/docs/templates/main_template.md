@@ -16,6 +16,8 @@ Template assigns available are [^1]:
   - `@relpath` - relative path of the index
   - any assigns passed to [[Index Template]] or [[Single Template]], depending
     on which is being rendered
+  - `@layout_root` - absolute path to [[layout root]], in case reading
+    resources at rendering time is needed
 
 ## Default contents
 

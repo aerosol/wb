@@ -34,8 +34,8 @@ $ wb new my-wiki
 ```
 
 > :warning: You can run `wb new` on your existing markdown files directory. It won't
-override anything, only copy the default [[templates]] to your [[layout root]] and
-this is all you need to generate the site.
+override anything (with the minor exception of `tags` directory - see: [[document tags]]), 
+only copy the default [[templates]] to your [[layout root]] and this is all you need to generate the site.
 
 The next step is to drop your [[documents|markdown files]] into `my-wiki` directory and
 generate the HTML site in some [[build root]], for example `/tmp/my-wiki-dev`:

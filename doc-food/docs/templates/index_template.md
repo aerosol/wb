@@ -17,6 +17,8 @@ Template assigns available are [^1]:
     building absolute links.
   - `@reldir` - relative directory of the index
   - `@relpath` - relative path of the index
+  - `@layout_root` - absolute path to [[layout root]], in case reading
+    resources at rendering time is needed
 
 ## Default contents
 

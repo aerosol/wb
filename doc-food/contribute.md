@@ -8,6 +8,7 @@ interested in helping me out, please read below:
   like the effort.
 - See: [[license]]
 - For bugfixes and code hygiene improvements, Pull Requests are always welcome!
-- For new features, please send me an e-mail and let's work it out (`wb@mtod.org` is at your disposal). See [[ideas]] for stuff I'd love to implement.
-- For documentation improvements please use the "Improve this page" link (see below)
+- For new features or support, please send me an e-mail and let's work it out (`wb@mtod.org` is at your disposal). 
+- See [[ideas]] for stuff I'd love to implement.
+- For documentation improvements please use the "Improve this page" link (see below).
 
