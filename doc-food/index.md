@@ -7,11 +7,12 @@
 
 ### Quick links:
 
+  - [[installation]] and [[usage]] :rocket:
+  - [[changelog]]
   - [[philosophy]] and [[use cases]]
   - [[features]] for general overview
   - [[ideas|Ideas]] for _maybe_ upcoming features. Would you
-    like to [[contribute|help]]?
-  - [[installation]] and [[usage]] :rocket:
+    like to [[contribute|contribute]]?
   - [[docs|Documentation]] for specific topics
   - [[license]]
 
