@@ -36,4 +36,8 @@ jobs:
       run: mix escript.build
     - name: Doc food
       run: ./wb gen doc-food docs
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: docs # The folder the action should deploy.
     
